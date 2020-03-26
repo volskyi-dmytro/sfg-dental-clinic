@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SfgDentalClinicApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(SfgDentalClinicApplication.class, args);
+        System.out.println("Some word");
     }
 
 }
