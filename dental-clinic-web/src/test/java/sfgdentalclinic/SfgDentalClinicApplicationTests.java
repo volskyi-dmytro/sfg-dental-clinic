@@ -1,4 +1,4 @@
-package com.stpunk47.sfgdentalclinic;
+package sfgdentalclinic;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
