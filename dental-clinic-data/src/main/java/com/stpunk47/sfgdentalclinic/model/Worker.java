@@ -2,7 +2,7 @@ package com.stpunk47.sfgdentalclinic.model;
 
 import java.time.LocalDate;
 
-public class Worker {
+public class Worker extends BaseEntity{
 
     private Department department;
     private Company company;

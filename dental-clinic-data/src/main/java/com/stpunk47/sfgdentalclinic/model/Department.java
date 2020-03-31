@@ -1,6 +1,6 @@
 package com.stpunk47.sfgdentalclinic.model;
 
-public class Department {
+public class Department extends BaseEntity{
 
     private String nameOfDepartment;
 
