@@ -4,8 +4,6 @@ import com.stpunk47.sfgdentalclinic.model.Company;
 import com.stpunk47.sfgdentalclinic.model.Dentist;
 import com.stpunk47.sfgdentalclinic.services.CompanyService;
 import com.stpunk47.sfgdentalclinic.services.DentistService;
-import com.stpunk47.sfgdentalclinic.services.map.CompanyServiceMap;
-import com.stpunk47.sfgdentalclinic.services.map.DentistServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,9 +16,10 @@ public class DataLoader implements CommandLineRunner {
 
 
 
-    public DataLoader() {
-        companyService = new CompanyServiceMap();
-        dentistService = new DentistServiceMap();
+    public DataLoader(CompanyService companyService, DentistService dentistService) {
+        this.companyService = companyService;
+
+        this.dentistService = dentistService;
     }
 
     @Override

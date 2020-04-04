@@ -2,9 +2,11 @@ package com.stpunk47.sfgdentalclinic.services.map;
 
 import com.stpunk47.sfgdentalclinic.model.Dentist;
 import com.stpunk47.sfgdentalclinic.services.DentistService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class DentistServiceMap extends AbsrtactMapService<Dentist, Long> implements DentistService {
     @Override
     public Set<Dentist> findAll() {

@@ -2,9 +2,11 @@ package com.stpunk47.sfgdentalclinic.services.map;
 
 import com.stpunk47.sfgdentalclinic.model.Company;
 import com.stpunk47.sfgdentalclinic.services.CompanyService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class CompanyServiceMap extends AbsrtactMapService<Company, Long> implements CompanyService {
 
     @Override
