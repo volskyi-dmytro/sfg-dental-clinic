@@ -46,7 +46,7 @@ public class DataLoader implements CommandLineRunner {
         dentistService.save(dentist1);
 
         Dentist dentist2 = new Dentist();
-        dentist1.setId(2L);
+        dentist2.setId(2L);
         dentist2.setFirstName("Volodymyr");
         dentist2.setLastName("Bortnikov");
         dentistService.save(dentist2);
