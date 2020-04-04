@@ -1,11 +1,11 @@
 package com.stpunk47.sfgdentalclinic.services.map;
 
 import com.stpunk47.sfgdentalclinic.model.Company;
-import com.stpunk47.sfgdentalclinic.services.CrudService;
+import com.stpunk47.sfgdentalclinic.services.CompanyService;
 
 import java.util.Set;
 
-public class CompanyServiceMap extends AbsrtactMapService<Company, Long> implements CrudService<Company, Long> {
+public class CompanyServiceMap extends AbsrtactMapService<Company, Long> implements CompanyService {
 
     @Override
     public Set<Company> findAll() {
@@ -31,5 +31,10 @@ public class CompanyServiceMap extends AbsrtactMapService<Company, Long> impleme
     public void deleteByID(Long id) {
         this.deleteById(id);
 
+    }
+
+    @Override
+    public Company findByLastName(String lastName) {
+        return null;
     }
 }

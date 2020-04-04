@@ -1,11 +1,11 @@
 package com.stpunk47.sfgdentalclinic.services.map;
 
 import com.stpunk47.sfgdentalclinic.model.Dentist;
-import com.stpunk47.sfgdentalclinic.services.CrudService;
+import com.stpunk47.sfgdentalclinic.services.DentistService;
 
 import java.util.Set;
 
-public class DentistServiceMap extends AbsrtactMapService<Dentist, Long> implements CrudService<Dentist, Long> {
+public class DentistServiceMap extends AbsrtactMapService<Dentist, Long> implements DentistService {
     @Override
     public Set<Dentist> findAll() {
         return super.findAll();
