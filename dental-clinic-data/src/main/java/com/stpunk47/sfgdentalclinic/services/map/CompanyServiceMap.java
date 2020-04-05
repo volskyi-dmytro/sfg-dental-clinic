@@ -21,7 +21,7 @@ public class CompanyServiceMap extends AbsrtactMapService<Company, Long> impleme
 
     @Override
     public Company save(Company object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

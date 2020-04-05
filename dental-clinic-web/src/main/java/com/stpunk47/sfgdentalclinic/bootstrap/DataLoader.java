@@ -26,13 +26,13 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Company company1 = new Company();
-        company1.setId(1L);
+
         company1.setFirstName("ALLO");
         company1.setLastName("TOV");
         companyService.save(company1);
 
         Company company2 = new Company();
-        company2.setId(2L);
+
         company2.setFirstName("BRW");
         company2.setLastName("TOV");
         companyService.save(company2);
@@ -40,13 +40,13 @@ public class DataLoader implements CommandLineRunner {
         System.out.println("Loaded companies");
 
         Dentist dentist1 = new Dentist();
-        dentist1.setId(1L);
+
         dentist1.setFirstName("Andrew");
         dentist1.setLastName("Pavlov");
         dentistService.save(dentist1);
 
         Dentist dentist2 = new Dentist();
-        dentist2.setId(2L);
+
         dentist2.setFirstName("Volodymyr");
         dentist2.setLastName("Bortnikov");
         dentistService.save(dentist2);

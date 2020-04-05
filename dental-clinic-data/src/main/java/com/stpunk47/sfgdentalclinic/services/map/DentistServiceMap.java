@@ -20,7 +20,7 @@ public class DentistServiceMap extends AbsrtactMapService<Dentist, Long> impleme
 
     @Override
     public Dentist save(Dentist object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class WorkerServiceMap extends AbsrtactMapService<Worker, Long> implement
 
     @Override
     public Worker save(Worker object) {
-        return super.save(object.getId(),object);
+        return super.save(object);
     }
 
     @Override
