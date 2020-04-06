@@ -9,7 +9,8 @@ public class SfgDentalClinicApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(SfgDentalClinicApplication.class, args);
-        System.out.println("Some word");
+        System.out.println("Some word and another");
+
     }
 
 }
