@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 <head>
     <meta charset="UTF-8">
     <title>List of Companies</title>
 </head>
 <body>
-    <h1 th:text="'List of Companies'">List of Companies v2</h1>
+    <h2 th:text="'List of Companies'">List of Companies v2</h2>
 
-    <table>
+    <table class="table table-striped">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Company name</th>
-                <th>Type of company</th>
+                <th style="width: 150px">Id</th>
+                <th style="width: 150px">Company name</th>
+                <th style="width: 150px">Type of company</th>
              </tr>
             </thead>
             <tbody>
