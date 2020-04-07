@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Worker extends BaseEntity{
 
+
     private Department department;
     private Company company;
     private LocalDate birthday;
