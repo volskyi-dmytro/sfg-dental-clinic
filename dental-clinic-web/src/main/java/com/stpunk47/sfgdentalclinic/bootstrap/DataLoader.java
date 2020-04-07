@@ -2,8 +2,10 @@ package com.stpunk47.sfgdentalclinic.bootstrap;
 
 import com.stpunk47.sfgdentalclinic.model.Company;
 import com.stpunk47.sfgdentalclinic.model.Dentist;
+import com.stpunk47.sfgdentalclinic.model.Department;
 import com.stpunk47.sfgdentalclinic.services.CompanyService;
 import com.stpunk47.sfgdentalclinic.services.DentistService;
+import com.stpunk47.sfgdentalclinic.services.DepartmentService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,18 +14,31 @@ public class DataLoader implements CommandLineRunner {
 
     private final CompanyService companyService;
     private final DentistService dentistService;
+    private final DepartmentService departmentService;
 
 
 
 
-    public DataLoader(CompanyService companyService, DentistService dentistService) {
+    public DataLoader(CompanyService companyService, DentistService dentistService, DepartmentService departmentService) {
         this.companyService = companyService;
 
         this.dentistService = dentistService;
+
+        this.departmentService = departmentService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        Department generalManagement = new Department();
+        generalManagement.setNameOfDepartment("General Management");
+        Department savedGeneralManagementDepartment = departmentService.save(generalManagement);
+
+        Department marketing = new Department();
+        marketing.setNameOfDepartment("Marketing");
+        Department savedMarketingDepartment = departmentService.save(marketing);
+
+
 
         Company company1 = new Company();
 
