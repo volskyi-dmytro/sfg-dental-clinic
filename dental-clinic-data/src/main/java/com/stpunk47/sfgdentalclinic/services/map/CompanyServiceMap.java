@@ -1,13 +1,25 @@
 package com.stpunk47.sfgdentalclinic.services.map;
 
 import com.stpunk47.sfgdentalclinic.model.Company;
+import com.stpunk47.sfgdentalclinic.model.Worker;
 import com.stpunk47.sfgdentalclinic.services.CompanyService;
+import com.stpunk47.sfgdentalclinic.services.DepartmentService;
+import com.stpunk47.sfgdentalclinic.services.WorkerService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
 public class CompanyServiceMap extends AbsrtactMapService<Company, Long> implements CompanyService {
+
+    private final DepartmentService departmentService;
+    private final WorkerService workerService;
+
+
+    public CompanyServiceMap(DepartmentService departmentService, WorkerService workerService) {
+        this.departmentService = departmentService;
+        this.workerService = workerService;
+    }
 
     @Override
     public Set<Company> findAll() {
@@ -21,7 +33,29 @@ public class CompanyServiceMap extends AbsrtactMapService<Company, Long> impleme
 
     @Override
     public Company save(Company object) {
-        return super.save(object);
+
+        if(object != null) {
+            if(object.getWorkers() != null){
+                object.getWorkers().forEach(worker -> {
+                    if(worker.getDepartment() != null){
+                        if(worker.getDepartment().getId()== null){
+                            worker.setDepartment(departmentService.save(worker.getDepartment()));
+                        }
+                    } else {
+                        throw new RuntimeException("Department is required");
+                    }
+                    if(worker.getId()==null){
+                        Worker savedWorker = workerService.save(worker);
+                        worker.setId(savedWorker.getId());
+                    }
+                });
+            }
+            return super.save(object);
+        } else{
+            return null;
+        }
+
+
     }
 
     @Override

@@ -2,13 +2,13 @@ package com.stpunk47.sfgdentalclinic.model;
 
 public class Department extends BaseEntity{
 
-    private String nameOfDepartment;
+    private String name;
 
-    public String getNameOfDepartment() {
-        return nameOfDepartment;
+    public String getName() {
+        return name;
     }
 
-    public void setNameOfDepartment(String nameOfDepartment) {
-        this.nameOfDepartment = nameOfDepartment;
+    public void setName(String name) {
+        this.name = name;
     }
 }

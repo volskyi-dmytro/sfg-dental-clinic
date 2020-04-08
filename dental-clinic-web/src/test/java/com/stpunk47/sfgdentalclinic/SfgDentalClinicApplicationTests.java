@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 @SpringBootTest(classes = com.stpunk47.sfgdentalclinic.SfgDentalClinicApplication.class)
+
 class SfgDentalClinicApplicationTests {
 
     @Test

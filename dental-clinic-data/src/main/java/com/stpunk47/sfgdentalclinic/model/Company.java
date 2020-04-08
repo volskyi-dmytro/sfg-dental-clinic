@@ -1,5 +1,6 @@
 package com.stpunk47.sfgdentalclinic.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Company extends Person {
@@ -7,7 +8,7 @@ public class Company extends Person {
     private String address;
     private String city;
     private String phone;
-    private Set<Worker> workers;
+    private Set<Worker> workers = new HashSet<>();
 
     public String getAddress() {
         return address;
