@@ -22,4 +22,10 @@ public class CompaniesController {
 
         return "/companies/index";
     }
+
+    @RequestMapping("/find")
+    public String findCompanies(){
+        return "notImplemented";
+
+    }
 }

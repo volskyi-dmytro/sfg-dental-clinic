@@ -20,4 +20,6 @@ public class DentistController {
 
         return "dentists/index";
     }
+
+
 }
