@@ -4,11 +4,13 @@ import com.stpunk47.sfgdentalclinic.model.Dentist;
 import com.stpunk47.sfgdentalclinic.model.Specialty;
 import com.stpunk47.sfgdentalclinic.services.DentistService;
 import com.stpunk47.sfgdentalclinic.services.SpecialtyService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class DentistServiceMap extends AbsrtactMapService<Dentist, Long> implements DentistService {
 
     private final SpecialtyService specialtyService;

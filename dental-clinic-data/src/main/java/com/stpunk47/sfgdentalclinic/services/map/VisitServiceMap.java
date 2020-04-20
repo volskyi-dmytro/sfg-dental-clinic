@@ -2,11 +2,13 @@ package com.stpunk47.sfgdentalclinic.services.map;
 
 import com.stpunk47.sfgdentalclinic.model.Visit;
 import com.stpunk47.sfgdentalclinic.services.VisitService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class VisitServiceMap extends AbsrtactMapService<Visit, Long> implements VisitService {
 
     @Override

@@ -5,11 +5,13 @@ import com.stpunk47.sfgdentalclinic.model.Worker;
 import com.stpunk47.sfgdentalclinic.services.CompanyService;
 import com.stpunk47.sfgdentalclinic.services.DepartmentService;
 import com.stpunk47.sfgdentalclinic.services.WorkerService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class CompanyServiceMap extends AbsrtactMapService<Company, Long> implements CompanyService {
 
     private final DepartmentService departmentService;
