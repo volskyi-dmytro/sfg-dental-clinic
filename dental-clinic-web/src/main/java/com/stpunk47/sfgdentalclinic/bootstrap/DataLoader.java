@@ -1,10 +1,7 @@
 package com.stpunk47.sfgdentalclinic.bootstrap;
 
 import com.stpunk47.sfgdentalclinic.model.*;
-import com.stpunk47.sfgdentalclinic.services.CompanyService;
-import com.stpunk47.sfgdentalclinic.services.DentistService;
-import com.stpunk47.sfgdentalclinic.services.DepartmentService;
-import com.stpunk47.sfgdentalclinic.services.SpecialtyService;
+import com.stpunk47.sfgdentalclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +14,7 @@ public class DataLoader implements CommandLineRunner {
     private final DentistService dentistService;
     private final DepartmentService departmentService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
 
 
@@ -24,11 +22,13 @@ public class DataLoader implements CommandLineRunner {
     public DataLoader(CompanyService companyService,
                       DentistService dentistService,
                       DepartmentService departmentService,
-                      SpecialtyService specialtyService) {
+                      SpecialtyService specialtyService,
+                      VisitService visitService) {
         this.companyService = companyService;
         this.dentistService = dentistService;
         this.departmentService = departmentService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -96,6 +96,12 @@ public class DataLoader implements CommandLineRunner {
         brw1.setBirthday(LocalDate.of(1986,8,5));
         company2.getWorkers().add(brw1);
         companyService.save(company2);
+
+        Visit pavloVisit = new Visit();
+        pavloVisit.setWorker(brw1);
+        pavloVisit.setDate(LocalDate.now());
+        pavloVisit.setDescription("Scheduled inspection");
+        visitService.save(pavloVisit);
 
 
         System.out.println("Loaded companies");
