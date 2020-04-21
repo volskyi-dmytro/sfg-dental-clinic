@@ -1,12 +1,32 @@
 package com.stpunk47.sfgdentalclinic.model;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
+
+
 @Entity
 @Table(name = "companies")
 public class Company extends Person {
+
+    @Builder
+    public Company(Long id, String firstName, String lastName, String address, String city, String phone,
+                   Set<Worker> workers) {
+        super(id, firstName, lastName);
+        this.address = address;
+        this.city = city;
+        this.phone = phone;
+        this.workers = workers;
+    }
 
     @Column(name = "address")
     private String address;
@@ -20,35 +40,4 @@ public class Company extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private Set<Worker> workers = new HashSet<>();
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Set<Worker> getWorkers() {
-        return workers;
-    }
-
-    public void setWorkers(Set<Worker> workers) {
-        this.workers = workers;
-    }
 }
