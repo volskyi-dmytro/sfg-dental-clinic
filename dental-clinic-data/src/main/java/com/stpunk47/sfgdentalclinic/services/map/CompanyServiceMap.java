@@ -73,6 +73,11 @@ public class CompanyServiceMap extends AbsrtactMapService<Company, Long> impleme
 
     @Override
     public Company findByLastName(String lastName) {
-        return null;
+        return this.findAll()
+                .stream()
+                .filter(company -> company.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null);
+
     }
 }
