@@ -47,11 +47,11 @@ class CompanyServiceMapTest {
     }
 
     @Test
-    void saveNoId() {
-        Company savedCompany = companyServiceMap.save(Company.builder().build());
+        void saveNoId() {
+            Company savedCompany = companyServiceMap.save(Company.builder().build());
 
-        assertNotNull(savedCompany);
-        assertNotNull(savedCompany.getId());
+            assertNotNull(savedCompany);
+            assertNotNull(savedCompany.getId());
 
 
     }
