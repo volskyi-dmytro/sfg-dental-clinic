@@ -14,7 +14,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -60,8 +61,31 @@ class CompaniesControllerTest {
 
         mockMvc.perform(get("/companies/find"))
         .andExpect(status().isOk())
-        .andExpect(view().name("notImplemented"));
+       .andExpect(view().name("notImplemented"));
+    }
 
+
+    @Test
+    void listCompaniesByIndex() throws Exception{
+        when(companyService.findAll()).thenReturn(companies);
+
+        mockMvc.perform(get("/companies"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("/companies/index"))
+                .andExpect(model().attribute("companies", hasSize(2)));
 
     }
+
+    @Test
+    void displayCompany() throws Exception{
+        when(companyService.findById(anyLong())).thenReturn(Company.builder().id(1L).build());
+
+        mockMvc.perform(get("/companies/123"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("companies/companyDetails"))
+                .andExpect(model().attribute("company", hasProperty("id", is(1L))));
+
+    }
+
+
 }
