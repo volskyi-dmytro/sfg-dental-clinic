@@ -6,18 +6,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
+
 
 @RequestMapping("/companies")
 @Controller
 public class CompaniesController {
 
+    private static final String VIEWS_COMPANIES_CREATE_OR_UPDATE_FORM = "companies/createOrUpdateCompanyForm";
     private final CompanyService companyService;
 
     public CompaniesController(CompanyService companyService) {
@@ -51,7 +51,8 @@ public class CompaniesController {
         }
 
         // find owners by last name
-        List<Company> results = companyService.findAllByLastNameLike(company.getLastName());
+        List<Company> results = companyService.findAllByLastNameLike("%"+company.getLastName()+"%");
+
         if (results.isEmpty()) {
             // no companies found
             result.rejectValue("lastName", "notFound", "not found");
@@ -70,9 +71,43 @@ public class CompaniesController {
     }
 
     @GetMapping("/{companyId}")
-    public ModelAndView showCompany(@PathVariable("companyId") Long companyId){
+    public ModelAndView showCompany(@PathVariable Long companyId){
         ModelAndView mav = new ModelAndView("companies/companyDetails");
         mav.addObject(companyService.findById(companyId));
         return mav;
+    }
+
+    @GetMapping("/new")
+    public String initCreationForm(Model model){
+        model.addAttribute("company", Company.builder().build());
+        return VIEWS_COMPANIES_CREATE_OR_UPDATE_FORM;
+    }
+    @PostMapping("/new")
+    public String processCreationForm(@Valid Company company, BindingResult result){
+        if(result.hasErrors()){
+            return VIEWS_COMPANIES_CREATE_OR_UPDATE_FORM;
+        } else {
+            Company savedCompany = companyService.save(company);
+            return "redirect:/companies/" + savedCompany.getId();
+        }
+    }
+
+    @GetMapping("/{companyId}/edit")
+    public String initUpdateCompanyForm(@PathVariable Long companyId, Model model){
+        model.addAttribute(companyService.findById(companyId));
+        return VIEWS_COMPANIES_CREATE_OR_UPDATE_FORM;
+    }
+
+    @PostMapping("/{companyId}/edit")
+    public String processUpdateCompanyForm(@Valid Company company,
+                                           BindingResult result,
+                                           @PathVariable Long companyId){
+        if(result.hasErrors()){
+            return VIEWS_COMPANIES_CREATE_OR_UPDATE_FORM;
+        } else {
+            company.setId(companyId);
+            Company savedCompany =  companyService.save(company);
+            return "redirect:/companies/" + savedCompany.getId();
+        }
     }
 }
