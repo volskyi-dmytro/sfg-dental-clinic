@@ -8,6 +8,7 @@ import com.stpunk47.sfgdentalclinic.services.WorkerService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -79,5 +80,10 @@ public class CompanyServiceMap extends AbsrtactMapService<Company, Long> impleme
                 .findFirst()
                 .orElse(null);
 
+    }
+
+    @Override
+    public List<Company> findAllByLastNameLike(String lastName) {
+        return null;
     }
 }

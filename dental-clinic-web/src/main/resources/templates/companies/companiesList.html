@@ -24,7 +24,7 @@
         <td th:text="${company.address}"/>
         <td th:text="${company.city}"/>
         <td th:text="${company.phone}"/>
-        <td><span th:each="worker : ${company.workers}" th:text="${worker.name} "/></td>
+        <td><span th:each="worker : ${company.workers}" th:text="${worker.firstName}"/></td>
     </tr>
     </tbody>
 </table>
