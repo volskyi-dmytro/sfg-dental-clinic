@@ -52,8 +52,8 @@ public class WorkerController {
     @GetMapping("/workers/new")
     public String initCreationForm(Company company, Model model){
         Worker worker = new Worker();
-        company.getWorkers().add(worker);
         worker.setCompany(company);
+        company.getWorkers().add(worker);
 
         model.addAttribute("worker", worker);
         return VIEWS_WORKERS_CREATE_OR_UPDATE_FORM;
@@ -69,6 +69,7 @@ public class WorkerController {
                 && company.getWorker(worker.getFirstName(), worker.getLastName(), true ) != null ){
             result.rejectValue("First name", "duplicate", "already exists");
         }
+
         company.getWorkers().add(worker);
         if (result.hasErrors()){
             model.addAttribute("worker", worker);
