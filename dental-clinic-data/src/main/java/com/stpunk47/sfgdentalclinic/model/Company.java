@@ -25,7 +25,10 @@ public class Company extends Person {
         this.address = address;
         this.city = city;
         this.phone = phone;
-        this.workers = workers;
+
+        if(workers != null) {
+            this.workers = workers;
+        }
     }
 
     @Column(name = "address")
@@ -39,5 +42,24 @@ public class Company extends Person {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private Set<Worker> workers = new HashSet<>();
+
+    public Worker getWorker(String firstName, String lastName){
+        return getWorker(firstName, lastName,false);
+    }
+
+    public Worker getWorker(String firstName, String lastName, boolean ignoreNew){
+        firstName = firstName.toLowerCase();
+        lastName = lastName.toLowerCase();
+        for (Worker worker: workers){
+            if(!ignoreNew || !worker.isNew()){
+                String compName = worker.getFirstName();
+                String comp2Name = worker.getLastName();
+                if(compName.equals(firstName) && comp2Name.equals(lastName)){
+                    return worker;
+                }
+            }
+        }
+        return null;
+    }
 
 }

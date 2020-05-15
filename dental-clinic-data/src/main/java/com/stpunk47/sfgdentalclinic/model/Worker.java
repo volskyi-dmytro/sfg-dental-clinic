@@ -11,10 +11,29 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "workers")
 public class Worker extends BaseEntity{
+
+    @Builder
+    public Worker (Long id,
+                   String firstName,
+                   String lastName,
+                   Department department,
+                   Company company,
+                   LocalDate birthday,
+                   Set<Visit> visits){
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.department = department;
+        this.company = company;
+        this.birthday = birthday;
+        this.visits = visits;
+
+    }
+
+
 
     @Column(name = "first_name")
     private String firstName;
