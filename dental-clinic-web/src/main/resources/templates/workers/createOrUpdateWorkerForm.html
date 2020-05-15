@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'companies')}">
+
+<body>
+
+<h2>
+    <th:block th:if="${worker['new']}">New </th:block>
+    Worker
+</h2>
+<form th:object="${worker}" class="form-horizontal" method="post">
+    <input type="hidden" name="id" th:value="*{id}" />
+    <div class="form-group has-feedback">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Company</label>
+            <div class="col-sm-10">
+                <span th:text="${worker.company?.firstName + ' ' + worker.company?.lastName}" />
+            </div>
+        </div>
+        <input
+                th:replace="~{fragments/inputField :: input ('Name', 'name', 'text')}" />
+        <input
+                th:replace="~{fragments/inputField :: input ('Birth Date', 'birthday', 'date')}" />
+        <input
+                th:replace="~{fragments/selectField :: select ('Type', 'department', ${departments})}" />
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button
+                    th:with="text=${worker['new']} ? 'Add Worker' : 'Update Worker'"
+                    class="btn btn-default" type="submit" th:text="${text}">Add
+                Worker</button>
+        </div>
+    </div>
+</form>
+
+</body>
+
+</html>
