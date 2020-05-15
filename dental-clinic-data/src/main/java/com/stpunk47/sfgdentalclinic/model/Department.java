@@ -10,10 +10,16 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "departments")
 public class Department extends BaseEntity{
+
+    @Builder
+    public Department(Long id, String name){
+        super(id);
+        this.name = name;
+    }
+
 
     @Column(name="name")
     private String name;
