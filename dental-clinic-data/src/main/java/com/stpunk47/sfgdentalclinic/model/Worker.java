@@ -29,8 +29,9 @@ public class Worker extends BaseEntity{
         this.department = department;
         this.company = company;
         this.birthday = birthday;
-        this.visits = visits;
-
+        if(visits == null || visits.size() > 0) {
+            this.visits = visits;
+        }
     }
 
 

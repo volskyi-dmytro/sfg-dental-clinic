@@ -20,12 +20,11 @@
     </tr>
     </thead>
     <tr>
-        <td th:text="${worker.name}" /></td>
-        <td
-                th:text="${#temporals.format(worker.birthday, 'yyyy-MM-dd')}" /></td>
+        <td th:text="${worker.firstName}" /></td>
+        <td th:text="${worker.lastName}" /></td>
+        <td th:text="${#temporals.format(worker.birthday, 'yyyy-MM-dd')}" /></td>
         <td th:text="${worker.department}" /></td>
-        <td
-                th:text="${worker.company?.firstName + ' ' + worker.company?.lastName}" /></td>
+        <td th:text="${worker.company?.firstName + ' ' + worker.company?.lastName}" /></td>
     </tr>
 </table>
 
