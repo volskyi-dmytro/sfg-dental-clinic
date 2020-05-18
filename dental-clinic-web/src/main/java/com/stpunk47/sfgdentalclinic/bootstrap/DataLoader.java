@@ -57,11 +57,11 @@ public class DataLoader implements CommandLineRunner {
         Specialty savedEndodontist = specialtyService.save(endodontist);
 
         Specialty orthodontist = new Specialty();
-        endodontist.setDescription("Orthodontist");
+        orthodontist.setDescription("Orthodontist");
         Specialty savedOthodontist = specialtyService.save(orthodontist);
 
         Specialty periodontist = new Specialty();
-        endodontist.setDescription("Periodontist");
+        periodontist.setDescription("Periodontist");
         Specialty savedPeriodontist = specialtyService.save(periodontist);
 
         Company company1 = new Company();
@@ -109,14 +109,14 @@ public class DataLoader implements CommandLineRunner {
         Dentist dentist1 = new Dentist();
         dentist1.setFirstName("Andrew");
         dentist1.setLastName("Pavlov");
-        dentistService.save(dentist1);
         dentist1.getSpecialties().add(savedOthodontist);
+        dentistService.save(dentist1);
 
         Dentist dentist2 = new Dentist();
         dentist2.setFirstName("Volodymyr");
         dentist2.setLastName("Bortnikov");
-        dentistService.save(dentist2);
         dentist2.getSpecialties().add(savedPeriodontist);
+        dentistService.save(dentist2);
 
         System.out.println("Loaded dentists...");
     }

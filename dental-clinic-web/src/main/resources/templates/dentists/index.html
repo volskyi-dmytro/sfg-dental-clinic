@@ -6,24 +6,26 @@
     <title>List of Dentists</title>
 </head>
 <body>
-    <h2 th:text="'List of Dentists'">List of Dentists</h2>
+<h2>Dentists</h2>
 
-    <table id="dentists" class="table table-striped">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>First name</th>
-            <th>Last name</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="dentist : ${dentists}">
-            <td th:text="${dentist.id}">1</td>
-            <td th:text="${dentist.firstName}">Alcatel</td>
-            <td th:text="${dentist.lastName}">DC</td>
-        </tr>
-        </tbody>
-    </table>
+<table id="dentists" class="table table-striped">
+    <thead>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Specialties</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dentist : ${dentists}">
+        <td th:text="${dentist.firstName}"></td>
+        <td th:text="${dentist.lastName}"></td>
+        <td><span th:each="specialty : ${dentist.specialties}"
+                  th:text="${specialty.description + ' '}" /> <span
+                th:if="${dentist?.specialties?.size() == 0}">none</span></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
