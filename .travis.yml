@@ -1,6 +1,16 @@
 language: java
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+sudo: false
+
 env:
   global:
-  - CODECOV_TOKEN="02c6a0eb-ea35-4c28-aa27-acce39977d10"
+    - CODECOV_TOKEN="02c6a0eb-ea35-4c28-aa27-acce39977d10"
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email:
+    recipients:
+      - volskyi.dmytro@gmail.com
+      on_success: never
+      on_failure: always
